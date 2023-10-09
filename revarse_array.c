@@ -1,17 +1,25 @@
-#include <stdio.h>
+#include <stdio.h>    // 20 30 40 50 10
 
 int main() {
-    int a[] = {10, 20, 30, 40, 50};
-    int b = a[0];
+    int a[100],i,b,n;
 
-    for (int i = 0; i < 5; i++) 
+    printf("Enter Array Size : ");
+    scanf("%d",&n);
+
+    for (i = 0; i < n; i++)
     {
-        a[i - 1] = a[i];
+        printf("Enter Value of a[%d] : " ,i);
+        scanf("%d",&a[i]);
+    }
+    
+    b = a[0];
+    for (i = 0; i < n; i++) 
+    {
+        a[i] = a[i + 1];
     }
 
-    a[4] = b;
-
-    for (int i = 0; i < 5; i++)
+    a[n-1] = b;
+    for (i = 0; i < n; i++)
     {
         printf("%d ", a[i]);
     }

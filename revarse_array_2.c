@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include<stdio.h>     // 50 20 30 40 10 
 
 int main()
 {
