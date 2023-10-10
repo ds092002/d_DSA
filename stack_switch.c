@@ -17,6 +17,7 @@ int insertEnd(int data)
 
 int delete()
 {
+
     if (top < 0)
     {
         printf("Stack Is Empty ");
@@ -37,8 +38,9 @@ int display()
 
 int main()
 {
-    int i;
-while(1){
+   int i,j;
+   while(1)
+    {
     printf("\nPress 1 To Insert End\n");
     printf("Press 2 To Delete\n");
     printf("Press 3 To Display\n");
@@ -49,23 +51,27 @@ while(1){
     switch(i)
     {
         case 1 :
-            printf("Enter the value to push: ");
-            scanf("%d", &i);
-            insertEnd(i);
+            printf("Enter the value to insert: ");
+            scanf("%d", &j);
+            insertEnd(j);
             break;
+        
         case 2 :
             delete();
-            //delete();
             break;
+        
         case 3 :
             display();
             break;
+        
         case 0 :
-            break;
+            printf("Exit\n");
+            return 0;
 
         default :
             printf("Invalid Choice");
             break;    
+    
     }
   }
 }
