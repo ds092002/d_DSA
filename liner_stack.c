@@ -37,8 +37,8 @@ int main()
 
         if (b > 0)
         {
-            printf("Your Seraching Elements Is Found On [ %d ] Position \n", b);
-            printf("                                     ----\n");
+            printf("Your Seraching Elements Is Found On ==> %d <== Position \n", b);
+            printf("                                      -----\n");
         }
         else
         {
