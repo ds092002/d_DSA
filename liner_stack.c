@@ -30,19 +30,19 @@ int main()
             printf("%d | ", a[i]);
         }
 
-        printf("\nEnter Serach Element : ");
+        printf("\nEnter Search Element : ");
         scanf("%d", &p);
 
         b = find_elements(a, p);
 
         if (b > 0)
         {
-            printf("Your Seraching Elements Is Found On ==> %d <== Position \n", b);
+            printf("Your Searching Elements Is Found On ==> %d <== Position \n", b);
             printf("                                      -----\n");
         }
         else
         {
-            printf("Your Seraching Elements Is Not Found.\n");
+            printf("Your Searching Elements Is Not Found.\n");
         }
 
         printf("Do you want to continue? (1 for Yes, 0 for No): ");
