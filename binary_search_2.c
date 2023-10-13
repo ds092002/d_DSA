@@ -6,7 +6,7 @@ int binary_serach(int a[] , int d , int n)
 
     while (l <= h)
     {
-        mid = l + h / 2;
+        mid = (l + h) / 2;
         if (a[mid] == d )
         {
             return mid + 1;
