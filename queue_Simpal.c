@@ -11,24 +11,24 @@ int first_Insert(int data)
     else if(f < 0)
     {
         f = r = 0;
+        a[r] = data;
     }
     else
     {
-        a[r] = data;
         r++;
+        a[r] = data;
     }
 }
 
 int first_Delete()
 {
-    if (f < 0)
+    if (f == r)
     {
-        printf("Queue Is Empty...");
-        return -1;
+        printf("Queue Is Empty...\n");
     }
-    else if (f == r)
+    else if (f < 0)
     {
-        return -1;
+        f = r = -1;
     }
     else
     {
@@ -50,5 +50,6 @@ int main()
     first_Insert(20);
     first_Insert(30);
     first_Insert(40);
+    first_Delete();
     display();
 }
