@@ -67,9 +67,11 @@ int main()
         
         case 2 :
             first_Delete();
+            break;
 
         case 3 :
             display();
+            break;
 
         case 0 :
             break;
