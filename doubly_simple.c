@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 struct node
 {
     int data;
     struct node *next;
+    struct node *prev;
 };
+
 struct node *head = NULL;
 
 void insertEnd(int val)
@@ -12,19 +15,44 @@ void insertEnd(int val)
     struct node *ptr = head;
     struct node *temp = malloc(sizeof(struct node));
     temp->data = val;
+    temp->next = NULL;
+    temp->prev = NULL;
 
     if (head == NULL)
     {
         head = temp;
-        temp->next = head;
         return;
     }
-    while (ptr->next != head)
+
+    while (ptr->next != NULL)
     {
         ptr = ptr->next;
     }
+
     ptr->next = temp;
-    temp->next = head;
+    temp->prev = ptr;
+}
+void deleteEnd()
+{
+    struct node *ptr = head;
+    struct node *p;
+    if (head == NULL)
+    {
+        printf("List Is Allready Empty.....\n");
+    }
+    else if (ptr->next == NULL)
+    {
+        head = NULL;
+        free(ptr);
+        return;
+    }
+    while (ptr->next != NULL)
+    {
+        p = ptr;
+        ptr = ptr->next;
+    }
+    p->next = NULL;
+    free(ptr);
     return;
 }
 
@@ -36,59 +64,19 @@ void insertFirst(int val)
 
     if (head == NULL)
     {
+        temp->next = NULL;
+        temp->prev = NULL;
         head = temp;
-        temp->next = head;
         return;
     }
-    while (ptr->next != head)
+    else
     {
-        ptr = ptr->next;
+        temp->prev = NULL;
+        temp->next = ptr;
+        ptr->prev = temp;
+        head = temp;
     }
-    ptr->next = temp;
-    temp->next = head;
-    head = temp;
-    return;
 }
-void insertMid(int val, int pos)
-{
-    struct node *ptr = head;
-    struct node *temp = malloc(sizeof(struct node));
-    temp->data = val;
-    struct node *prev;
-    while (ptr->data != pos)
-    {
-        prev = ptr;
-        ptr = ptr->next;
-    }
-    prev->next = temp;
-    temp->next = ptr;
-    return;
-}
-
-void deleteEnd()
-{
-    struct node *ptr = head;
-    struct node *prev;
-    if (head == NULL)
-    {
-        printf("List Is Allready Empty.....\n");
-    }
-    else if (head->next == NULL)
-    {
-        head = NULL;
-        free(ptr);
-        return;
-    }
-    while (ptr->next != NULL)
-    {
-        prev = ptr;
-        ptr = ptr->next;
-    }
-    prev->next = head;
-    free(ptr);
-    return;
-}
-
 void deleteFirst()
 {
     struct node *ptr = head;
@@ -97,16 +85,33 @@ void deleteFirst()
     {
         printf("List Is All Ready Empty....\n");
     }
-    while (ptr->next != head)
+    else if (head->next == NULL)
     {
+        head = NULL;
+        free(ptr);
+        return;
+    }
+    head = ptr->next;
+    ptr->next->prev = NULL;
+    free(ptr);
+}
+void insertMid(int val, int pos)
+{
+    struct node *ptr = head;
+    struct node *temp = malloc(sizeof(struct node));
+
+    temp->data = val;
+    struct node *p;
+    while (ptr->data != pos)
+    {
+        p = ptr;
         ptr = ptr->next;
     }
-    ptr->next = temp->next;
-    head = temp->next;
-    free(ptr);
+    p->next = temp;
+    temp->next = ptr;
+    ptr->prev = temp;
     return;
 }
-
 void midDelete(int pos)
 {
     struct node *ptr = head;
@@ -117,25 +122,24 @@ void midDelete(int pos)
         ptr = ptr->next;
     }
     prev->next = ptr->next;
+    ptr->prev = ptr->prev->prev;
     free(ptr);
     return;
 }
-
 void display()
 {
     struct node *ptr = head;
     if (head == NULL)
     {
-        printf("List is Empty");
+        printf("List Is Empty....\n");
     }
     else
     {
-        while (ptr->next != head)
+        while (ptr != NULL)
         {
             printf("%d ", ptr->data);
             ptr = ptr->next;
         }
-        printf("%d ", ptr->data);
     }
     printf("\n");
 }
@@ -145,19 +149,17 @@ int main()
     insertEnd(10);
     insertEnd(20);
     insertEnd(30);
-    insertEnd(40);
     display();
     deleteEnd();
-    display();
-
+    insertFirst(40);
     insertFirst(50);
-    insertFirst(60);
-    insertFirst(70);
     display();
     deleteFirst();
     display();
-    
-    insertMid(80, 30);
-    insertMid(90, 40);
+    insertMid(60, 20);
+    insertMid(70, 10);
+    display();
+    midDelete(20);
+    midDelete(10);
     display();
 }
