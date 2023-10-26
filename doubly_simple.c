@@ -32,6 +32,7 @@ void insertEnd(int val)
     ptr->next = temp;
     temp->prev = ptr;
 }
+
 void deleteEnd()
 {
     struct node *ptr = head;
@@ -71,12 +72,17 @@ void insertFirst(int val)
     }
     else
     {
+        while (ptr->next != NULL)
+        {
+            ptr = ptr->next;
+        }
         temp->prev = NULL;
         temp->next = ptr;
         ptr->prev = temp;
         head = temp;
     }
 }
+
 void deleteFirst()
 {
     struct node *ptr = head;
@@ -95,6 +101,7 @@ void deleteFirst()
     ptr->next->prev = NULL;
     free(ptr);
 }
+
 void insertMid(int val, int pos)
 {
     struct node *ptr = head;
@@ -112,6 +119,7 @@ void insertMid(int val, int pos)
     ptr->prev = temp;
     return;
 }
+
 void midDelete(int pos)
 {
     struct node *ptr = head;
@@ -126,6 +134,7 @@ void midDelete(int pos)
     free(ptr);
     return;
 }
+
 void display()
 {
     struct node *ptr = head;
