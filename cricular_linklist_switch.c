@@ -143,7 +143,7 @@ void display()
 int main()
 {
 
-    int ch = 0, i, j, x, y;
+    int ch, i, j, x, y;
 
     do
     {
