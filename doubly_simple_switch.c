@@ -32,13 +32,14 @@ void insertEnd(int val)
     ptr->next = temp;
     temp->prev = ptr;
 }
+
 void deleteEnd()
 {
     struct node *ptr = head;
     struct node *p;
     if (head == NULL)
     {
-        printf("List Is Allready Empty.....\n");
+        printf("List Is Already Empty.....\n");
     }
     else if (ptr->next == NULL)
     {
@@ -71,6 +72,10 @@ void insertFirst(int val)
     }
     else
     {
+        while (ptr->next != NULL)
+        {
+            ptr = ptr->next;
+        }
         temp->prev = NULL;
         temp->next = head;
         head->prev = temp;
@@ -84,7 +89,7 @@ void deleteFirst()
     struct node *temp = head;
     if (head == NULL)
     {
-        printf("List Is All Ready Empty....\n");
+        printf("List Is Already Empty....\n");
     }
     else if (head->next == NULL)
     {
@@ -96,6 +101,7 @@ void deleteFirst()
     ptr->next->prev = NULL;
     free(ptr);
 }
+
 void insertMid(int val, int pos)
 {
     struct node *ptr = head;
@@ -113,20 +119,22 @@ void insertMid(int val, int pos)
     ptr->prev = temp;
     return;
 }
+
 void midDelete(int pos)
 {
     struct node *ptr = head;
-    struct node *prev;
+    struct node *p;
     while (ptr->data != pos)
     {
-        prev = ptr;
+        p = ptr;
         ptr = ptr->next;
     }
-    prev->next = ptr->next;
-    ptr->prev = ptr->prev->prev;
+    p->next = ptr->next;
+    ptr->prev = p;
     free(ptr);
     return;
 }
+
 void display()
 {
     struct node *ptr = head;
@@ -144,9 +152,10 @@ void display()
     }
     printf("\n");
 }
+
 int main()
 {
-    int ch, i, j, x, y;
+    int ch = 0, i, j, x, y;
 
     do
     {
@@ -176,7 +185,7 @@ int main()
 
         case 3:
             printf("Enter Value For Insert First : ");
-            scanf("%d", j);
+            scanf("%d", &j);
             insertFirst(j);
             break;
 
@@ -187,13 +196,13 @@ int main()
         case 5:
             printf("Enter Value For Mid Add : ");
             scanf("%d", &x);
-            printf("Enter Postion For Add : ");
+            printf("Enter Position For Add : ");
             scanf("%d", &y);
             insertMid(x, y);
             break;
 
         case 6:
-            printf("Enter Postion For Delete : ");
+            printf("Enter Position For Delete : ");
             scanf("%d", &x);
             midDelete(x);
             break;

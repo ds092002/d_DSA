@@ -115,13 +115,13 @@ void insertMid(int val, int pos)
 void midDelete(int pos)
 {
     struct node *ptr = head;
-    struct node *prev;
+    struct node *p;
     while (ptr->data != pos)
     {
-        prev = ptr;
+        p = ptr;
         ptr = ptr->next;
     }
-    prev->next = ptr->next;
+    p->next = ptr->next;
     ptr->prev = ptr->prev->prev;
     free(ptr);
     return;
@@ -151,11 +151,14 @@ int main()
     insertEnd(30);
     display();
     deleteEnd();
+    display();
+
     insertFirst(40);
     insertFirst(50);
     display();
     deleteFirst();
     display();
+
     insertMid(60, 20);
     insertMid(70, 10);
     display();

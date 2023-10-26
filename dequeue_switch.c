@@ -1,6 +1,6 @@
-#include<stdio.h>
+#include <stdio.h>
 #define n 5
-int a[n] , f = -1 , r = -1;
+int a[n], f = -1, r = -1;
 
 int insert_End(int data)
 {
@@ -9,14 +9,14 @@ int insert_End(int data)
         f = r = 0;
         a[r] = data;
     }
-    else if ((r + 1)% n == f)
+    else if ((r + 1) % n == f)
     {
         printf("Queue Is Full...\n");
     }
     else
     {
         r = (r + 1) % n;
-        a[r] = data;   
+        a[r] = data;
     }
 }
 
@@ -34,7 +34,7 @@ int insert_First(int data)
     else
     {
         --f;
-        a[f] = data;        
+        a[f] = data;
     }
 }
 
@@ -66,7 +66,7 @@ int delete_End()
     }
     else
     {
-        r--;        
+        r--;
     }
 }
 
@@ -74,52 +74,52 @@ int display()
 {
     for (int i = f; i <= r; i++)
     {
-        printf("%d\t",a[i]);
+        printf("%d\t", a[i]);
     }
 }
 
 int main()
 {
-    int ch , i , j;
+    int ch, i, j;
 
     do
     {
         printf("\nPress 1 for Insert End Queue\n");
-        printf("Press 2 for Delete First Queue\n");
+        printf("Press 2 for Delete End Queue\n");
         printf("Press 3 for Insert First Queue\n");
-        printf("Press 4 for Delete End Queue\n");
+        printf("Press 4 for Delete First Queue\n");
         printf("Press 5 For Display Queue\n");
         printf("Press 0 for Exit...\n");
 
         printf("Enter Your Choice :");
-        scanf("%d",&ch);
+        scanf("%d", &ch);
 
         switch (ch)
         {
-        case 1 :
+        case 1:
             printf("\nEnter Value For Insert End : ");
-            scanf("%d",&i);
+            scanf("%d", &i);
             insert_End(i);
             break;
-        case 2 :
-            delete_First();
-            break;
-
-        case 3 :
-            printf("\nEnter Value For Insert First : ");
-            scanf("%d",&j);
-            insert_First(j);
-            break;
-
-        case 4 :
+        case 2:
             delete_End();
             break;
 
-        case 5 : 
+        case 3:
+            printf("\nEnter Value For Insert First : ");
+            scanf("%d", &j);
+            insert_First(j);
+            break;
+
+        case 4:
+            delete_First();
+            break;
+
+        case 5:
             display();
             break;
 
-        case 0 :
+        case 0:
             break;
 
         default:
