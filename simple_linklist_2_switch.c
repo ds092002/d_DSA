@@ -160,7 +160,7 @@
 
             case 3 :
                 printf("Enter Value For Insert First : ");
-                scanf("%d",j);
+                scanf("%d",&j);
                 insertFirst(j);
                 break;
 
