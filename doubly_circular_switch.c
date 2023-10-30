@@ -171,23 +171,70 @@ int display()
 
 int main()
 {
-    insertEnd(10);
-    insertEnd(20);
-    insertEnd(30);
-    display();
-    deleteEnd();
-    display();
 
-    insertFirst(40);
-    insertFirst(50);
-    display();
-    deleteFirst();
-    display();
+    int i, j, x, y, ch;
 
-    insertMid(60, 20);
-    insertMid(70, 10);
-    display();
-    midDelete(20);
-    midDelete(10);
-    display();
+
+    do
+    {
+       printf("\nPress 1. For Insert End.\n");
+       printf("Press 2. For Delete End.\n");
+       printf("Press 3. For Insert First.\n");
+       printf("Press 4. For Delete First.\n");
+       printf("Press 5. For Mid Insert.\n");
+       printf("Press 6. For Mid Delete.\n");
+       printf("Press 9. For Display. \n");
+       printf("Press 0. For Exit. \n");
+
+       printf("\nEnter Your Choice : ");
+       scanf("%d", &ch);
+
+        switch (ch)
+        {
+        case 1:
+            printf("Enter Value For Insert End : ");
+            scanf("%d", &i);
+            insertEnd(i);
+            break;
+
+        case 2:
+            deleteEnd();
+            break;
+
+        case 3:
+            printf("Enter Value For Insert First : ");
+            scanf("%d", &j);
+            insertFirst(j);
+            break;
+
+        case 4:
+            deleteFirst();
+            break;
+
+        case 5:
+            printf("Enter Value For Mid Add : ");
+            scanf("%d", &x);
+            printf("Enter Position For Add : ");
+            scanf("%d", &y);
+            insertMid(x, y);
+            break;
+
+        case 6:
+            printf("Enter Position For Delete : ");
+            scanf("%d", &x);
+            midDelete(x);
+            break;
+
+        case 9:
+            display();
+            break;
+
+        case 0:
+            break;
+
+        default:
+            printf("Please Enter Valid Choice......");
+            break;
+        }
+    } while (ch != 0);
 }
